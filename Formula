@@ -1,3 +1,4 @@
+
 import java.util.Scanner;
 import java.lang.String;
 
@@ -5,7 +6,7 @@ public class Tim {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         System.out.println("Введите время включения:");
-        String timeent = in.nextLine();
+        String timeent = in.next();
         System.out.println("Введите наибольшее давление в балоне:");
         int p1 = in.nextInt();
         System.out.println("Введите среднее давление в балоне:");
@@ -13,7 +14,7 @@ public class Tim {
         System.out.println("Введите минимальное давление в балоне:");
         int p3 = in.nextInt();
         System.out.println("Введите время у очага:");
-        String timeht = in.nextLine();
+        String timeht = in.next();
         System.out.println("Введите наибольшее давление у очага:");
         int ph1 = in.nextInt();
         System.out.println("Введите среднее давление у очага:");
@@ -23,3 +24,4 @@ public class Tim {
 
     }
 }
+
