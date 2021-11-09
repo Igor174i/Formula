@@ -1,12 +1,12 @@
-
+import java.time.LocalTime;
 import java.util.Scanner;
-import java.lang.String;
 
 public class Tim {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         System.out.println("Введите время включения:");
-        String timeent = in.next();
+        String time1 = in.next();// Т ВКЛЮЧЕНИЯ
+        LocalTime timeent = LocalTime.parse(time1);
         System.out.println("Введите наибольшее давление в балоне:");
         int p1 = in.nextInt();
         System.out.println("Введите среднее давление в балоне:");
@@ -14,14 +14,15 @@ public class Tim {
         System.out.println("Введите минимальное давление в балоне:");
         int p3 = in.nextInt();
         System.out.println("Введите время у очага:");
-        String timeht = in.next();
+        String time2 = in.next();// Т У ОЧАГА
         System.out.println("Введите наибольшее давление у очага:");
         int ph1 = in.nextInt();
         System.out.println("Введите среднее давление у очага:");
         int ph2 = in.nextInt();
         System.out.println("Введите минимальное давление у очага:");
         int ph3 = in.nextInt();
-
-    }
-}
-
+        int pp = 10;
+        double v = 6.8;
+        int k = 44;
+        double tob = (p3 - pp) * v / k;// ФОРМУЛА Т ВОЗВРАЩЕНИЯ
+        LocalTime timeext = timeent.plusMinutes((long) tob);// Т ВОЗВРАЩЕНИЯ
