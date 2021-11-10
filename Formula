@@ -6,7 +6,7 @@ public class Tim {
         Scanner in = new Scanner(System.in);
         System.out.println("Введите время включения:");
         String time1 = in.next();// Т ВКЛЮЧЕНИЯ
-        LocalTime timeent = LocalTime.parse(time1);
+        LocalTime timeent = LocalTime.parse(time1);// T Включения
         System.out.println("Введите наибольшее давление в балоне:");
         int p1 = in.nextInt();
         System.out.println("Введите среднее давление в балоне:");
@@ -15,6 +15,7 @@ public class Tim {
         int p3 = in.nextInt();
         System.out.println("Введите время у очага:");
         String time2 = in.next();// Т У ОЧАГА
+        LocalTime timeHearth1 = LocalTime.parse(time2); // Т у очага
         System.out.println("Введите наибольшее давление у очага:");
         int ph1 = in.nextInt();
         System.out.println("Введите среднее давление у очага:");
@@ -24,5 +25,30 @@ public class Tim {
         int pp = 10;
         double v = 6.8;
         int k = 44;
-        double tob = (p3 - pp) * v / k;// ФОРМУЛА Т ВОЗВРАЩЕНИЯ
+        double tob = (p3 - pp) * v / k;// T Общая
         LocalTime timeext = timeent.plusMinutes((long) tob);// Т ВОЗВРАЩЕНИЯ
+        int pway = p3 - ph3;//  Р ПУТИ
+        System.out.println("P пути = " + pway);
+        System.out.println("Введите условия работы:");
+        float pway2 = in.nextFloat();// УСЛОВИЯ РАБОТЫ
+        if (pway2 == 2.5) {
+            float simpleConditions = (pway / 2);
+            float controleOut = pway + simpleConditions + pp; // P контрольного выхода
+            double twork = (ph3 - controleOut) * v / k; // T Рабочая
+            LocalTime timeoutControle =timeHearth1.plusMinutes((long)twork);// T Контрольного выхода
+            System.out.printf("Т общая = %.0f \n", tob );
+            System.out.println("Т возвращения = " + timeext);
+            System.out.printf("P Контрольного выхода = %.1f \n", controleOut);// ПРОСТЫЕ УСЛОВИЯ
+            System.out.println("Т контрольного выхода = " + timeoutControle);
+        }
+        if (pway2 == 3) {
+            float controleOut = pway + pway + pp;
+            double twork = (ph3 - controleOut) * v / k; // T Рабочая
+            LocalTime timeoutControle =timeHearth1.plusMinutes((long)twork);// T Контрольного выхода
+            System.out.printf("Т общая = %.0f \n", tob );
+            System.out.println("Т возвращения = " + timeext);
+            System.out.printf("P Контрольного выхода = %.1f \n", controleOut);// Сложные условия
+            System.out.println("Т контрольного выхода = " + timeoutControle);
+        }
+    }
+}
